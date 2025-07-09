@@ -6,10 +6,16 @@ import path from 'path';
 
 dotenv.config();
 
-// Configuração do OpenAI
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Configuração do OpenAI (opcional)
+let openai = null;
+if (process.env.OPENAI_API_KEY) {
+  openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+  console.log('✅ OpenAI configurado e ativo');
+} else {
+  console.log('⚠️  OpenAI não configurado - IA desabilitada');
+}
 
 // Configuração do Discord
 const client = new Client({
