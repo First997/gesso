@@ -118,6 +118,11 @@ function createEmbed(title, description, color = 0x00AE86) {
 
 // Função IA
 async function askAI(question, context = '') {
+  // Verificar se OpenAI está disponível
+  if (!openai) {
+    return 'ℹ️ **IA não disponível** - A integração com OpenAI não foi configurada.\n\n🎫 **Crie um ticket para falar com nossa equipe:**\nUse o comando `/ticket` para receber suporte humano personalizado!';
+  }
+
   try {
     const systemPrompt = `Você é um assistente de suporte profissional e prestativo. 
     Responda de forma clara, educada e útil. Se necessário, sugira criar um ticket para suporte humano.
@@ -362,7 +367,8 @@ client.on('interactionCreate', async (interaction) => {
           const question = interaction.options.getString('pergunta');
           await interaction.deferReply();
           const response = await askAI(question);
-          const aiEmbed = createEmbed('🤖 Resposta da IA', response, 0x9B59B6);
+          const aiColor = openai ? 0x9B59B6 : 0xFF9900;
+          const aiEmbed = createEmbed('🤖 Assistente IA', response, aiColor);
           await interaction.editReply({ embeds: [aiEmbed] });
           break;
         case 'setup':
@@ -418,8 +424,8 @@ client.on('messageCreate', async (message) => {
         member.presence?.status !== 'offline'
       );
       
-      // Se não há staff online e usuário fez pergunta
-      if (onlineStaff.size === 0 && message.content.includes('?')) {
+      // Se não há staff online, usuário fez pergunta e IA está disponível
+      if (onlineStaff.size === 0 && message.content.includes('?') && openai) {
         setTimeout(async () => {
           const aiResponse = await askAI(message.content, 'Este usuário está em um ticket de suporte');
           const aiEmbed = createEmbed(
