@@ -1,12 +1,24 @@
 {
-  "name": "bot",
+  "name": "discord-ticket-ai-bot",
   "version": "1.0.0",
-  "main": "bot.js",
+  "description": "Bot Discord profissional com sistema de tickets e IA integrada",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node index.js",
+    "dev": "node --watch index.js"
   },
+  "keywords": ["discord", "bot", "tickets", "ai", "suporte"],
+  "author": "Seu Nome",
+  "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
-    "twilio": "^4.0.0"
+    "discord.js": "^14.13.0",
+    "openai": "^4.24.1",
+    "dotenv": "^16.3.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "engines": {
+    "node": ">=16.9.0"
   }
 }
