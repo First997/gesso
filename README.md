@@ -1,209 +1,209 @@
-# 🤖 Bot Discord - Sistema de Tickets com IA
+# 🌌 Bot Discord Letaliverse
 
-Um bot Discord profissional completo com sistema de tickets avançado e integração com Inteligência Artificial para suporte automatizado.
+Bot de moderação e administração completo para o servidor Discord Letaliverse, com sistema de embeds personalizadas, tickets de suporte, sistema de XP e comandos de moderação.
 
 ## ✨ Funcionalidades
 
+### 📋 Embeds Personalizadas
+- **Boas-vindas**: Embed de boas-vindas personalizada com temática cósmica
+- **Regras**: Regras completas do servidor com design atrativo
+- **Sorteios**: Embed para canal de sorteios da staff
+- **Seja Staff**: Formulários de recrutamento para diferentes áreas
+- **Seja Booster**: Incentivo para boost do servidor
+- **Cargos XP**: Sistema de progressão com recompensas por nível
+- **Suporte**: Central de atendimento com sistema de tickets
+
+### 🛡️ Sistema de Moderação
+- `/ban` - Banir usuários
+- `/kick` - Expulsar usuários  
+- `/timeout` - Aplicar timeout (silenciar)
+- `/clear` - Limpar mensagens do canal
+
 ### 🎫 Sistema de Tickets
-- ✅ Criação automática de canais privados
-- ✅ Controle de permissões por ticket
-- ✅ Botões interativos para fácil uso
-- ✅ Sistema de logs completo
-- ✅ Prevenção de múltiplos tickets por usuário
-- ✅ Fechamento automático com feedback
+- Criação automática de tickets de suporte
+- Canais privados com permissões configuradas
+- Sistema de fechamento com botões interativos
 
-### 🤖 Integração com IA
-- ✅ Comandos `/ai` para consultas diretas
-- ✅ Resposta automática quando staff offline
-- ✅ IA contextual para tickets de suporte
-- ✅ Respostas personalizadas e profissionais
+### 📈 Sistema de XP
+- Ganho automático de XP por mensagens
+- Sistema de níveis com notificações
+- Progressão baseada nos cargos do Letaliverse
 
-### 🛠️ Comandos Disponíveis
-- `/ticket` - Criar novo ticket de suporte
-- `/close` - Fechar ticket atual
-- `/ai [pergunta]` - Consultar a IA
-- `/setup` - Configurar sistema (admin)
+### 👋 Boas-vindas Automáticas
+- Mensagem de boas-vindas personalizada para novos membros
+- Integração com embed de boas-vindas do servidor
 
-### 🔧 Recursos Técnicos
-- ✅ Slash Commands modernos
-- ✅ Persistência de dados em JSON
-- ✅ Sistema de logs detalhado
-- ✅ Tratamento completo de erros
-- ✅ Interface visual profissional
-- ✅ Compatível com Discord.js v14
+## 🚀 Comandos Disponíveis
 
-## 🚀 Instalação e Configuração
+### Comandos de Administração (Apenas Admins)
+- `/setup-embeds` - Listar todos os comandos de embeds disponíveis
+- `/send-welcome` - Enviar embed de boas-vindas
+- `/send-rules` - Enviar embed de regras
+- `/send-giveaway` - Enviar embed de sorteios
+- `/send-staff` - Enviar embed de recrutamento staff
+- `/send-booster` - Enviar embed seja booster
+- `/send-xp` - Enviar embed de cargos XP
+- `/send-support` - Enviar embed de suporte com botão de ticket
+
+### Comandos de Moderação (Moderadores/Admins)
+- `/ban @usuário [motivo]` - Banir um usuário
+- `/kick @usuário [motivo]` - Expulsar um usuário
+- `/timeout @usuário <minutos> [motivo]` - Silenciar um usuário
+- `/clear <quantidade>` - Limpar mensagens (1-100)
+
+### Comandos Gerais
+- `/ticket` - Criar um ticket de suporte
+- `/close` - Fechar ticket atual (apenas em tickets)
+
+## ⚙️ Configuração
 
 ### 1. Pré-requisitos
-- Node.js 16.9.0 ou superior
-- Conta Discord Developer
-- Chave API do OpenAI (opcional)
+```bash
+# Node.js 16.9.0 ou superior
+node --version
 
-### 2. Configuração do Bot Discord
+# Instalar dependências
+npm install
+```
 
+### 2. Configurar Bot no Discord
 1. Acesse [Discord Developer Portal](https://discord.com/developers/applications)
 2. Crie uma nova aplicação
 3. Vá em "Bot" e crie um bot
 4. Copie o token do bot
 5. Em "OAuth2 > URL Generator":
    - Scopes: `bot`, `applications.commands`
-   - Permissions: `Administrator` (recomendado)
+   - Permissions: `Administrator` (recomendado para todas as funções)
 
-### 3. Instalação
-
+### 3. Configurar Variáveis de Ambiente
 ```bash
-# Clone ou baixe o projeto
-git clone <seu-repositorio>
-cd discord-ticket-ai-bot
-
-# Instale as dependências
-npm install
-
-# Configure as variáveis de ambiente
+# Copie o arquivo de exemplo
 cp .env.example .env
+
+# Edite o arquivo .env com seus dados
+DISCORD_TOKEN=seu_token_do_bot_aqui
+CLIENT_ID=seu_client_id_aqui
+GUILD_ID=id_do_servidor_aqui
+
+# Configure os IDs dos canais (opcional)
+TICKET_CATEGORY_ID=id_categoria_tickets
+SUPPORT_ROLE_ID=id_cargo_suporte
+WELCOME_CHANNEL_ID=id_canal_boas_vindas
+# ... outros canais conforme necessário
 ```
 
-### 4. Configuração do .env
+### 4. Obter IDs do Discord
+1. Ative o **Modo Desenvolvedor** no Discord (Configurações > Avançado > Modo Desenvolvedor)
+2. Clique com botão direito no servidor/canal/cargo
+3. Selecione **"Copiar ID"**
 
-Edite o arquivo `.env` com suas informações:
+## 🎮 Como Usar
 
-```env
-# Discord Bot Configuration
-DISCORD_TOKEN=SEU_TOKEN_AQUI
-CLIENT_ID=ID_DO_SEU_BOT
-GUILD_ID=ID_DO_SEU_SERVIDOR
-
-# OpenAI Configuration (opcional)
-OPENAI_API_KEY=SUA_CHAVE_OPENAI
-
-# Bot Configuration
-TICKET_CATEGORY_ID=ID_CATEGORIA_TICKETS
-SUPPORT_ROLE_ID=ID_CARGO_SUPORTE
-LOG_CHANNEL_ID=ID_CANAL_LOGS
-```
-
-### 5. Configuração do Servidor
-
-1. **Criar Categoria para Tickets:**
-   - Crie uma categoria chamada "🎫 Tickets"
-   - Copie o ID da categoria
-
-2. **Criar Cargo de Suporte:**
-   - Crie um cargo @Suporte
-   - Copie o ID do cargo
-
-3. **Criar Canal de Logs:**
-   - Crie um canal #logs-tickets
-   - Copie o ID do canal
-
-### 6. Iniciar o Bot
-
+### 1. Iniciar o Bot
 ```bash
-# Desenvolvimento
+# Modo desenvolvimento (reinicia automaticamente)
 npm run dev
 
-# Produção
+# Modo produção
 npm start
 ```
 
-## 📋 Como Usar
+### 2. Configurar Embeds no Servidor
+1. Use `/setup-embeds` para ver todos os comandos disponíveis
+2. Use os comandos `/send-*` nos canais apropriados
+3. Configure os canais de acordo com sua estrutura
 
-### Para Administradores
+### 3. Sistema de Tickets
+1. Use `/send-support` no canal de suporte
+2. Membros podem clicar no botão para criar tickets
+3. Tickets são criados automaticamente com permissões adequadas
 
-1. **Configurar Sistema:**
-   ```
-   /setup
-   ```
-   
-2. **Verificar Logs:**
-   - Monitore o canal de logs configurado
-   - Acompanhe criação/fechamento de tickets
+## 🎨 Embeds Incluídas
 
-### Para Usuários
+### 🌌 Boas-vindas
+- Temática cósmica do Letaliverse
+- Guia de primeiros passos
+- Links para canais importantes
+- Imagem personalizada
 
-1. **Criar Ticket:**
-   - Use o comando `/ticket`
-   - Ou clique no botão após `/setup`
+### 📜 Regras
+- Regras de convivência detalhadas
+- Uso correto do servidor
+- Design profissional
+- Imagem temática
 
-2. **Usar IA:**
-   ```
-   /ai Como configurar meu bot?
-   ```
+### 🎁 Sorteios
+- Instruções para participação
+- Design atrativo
+- Imagem personalizada
 
-3. **Fechar Ticket:**
-   - Use `/close` ou clique no botão vermelho
+### 👥 Seja Staff
+- Formulários por área (Suporte, Eventos, Design, Comunicação)
+- Links diretos do Google Forms
+- Descrição detalhada de cada função
 
-## 🎯 Casos de Uso Comerciais
+### 🚀 Seja Booster
+- Benefícios do server boost
+- Design chamativo
+- Incentivo à comunidade
 
-### 💼 Para Desenvolvedores
-- Venda de bots personalizados
-- Suporte técnico automatizado
-- Consultoria em Discord
+### 🧱 Cargos XP
+- Sistema completo de progressão
+- 10 níveis com benefícios únicos
+- Do Ghoul ao Rei Mago
+- Explicação detalhada do sistema
 
-### 🏢 Para Empresas
-- Atendimento ao cliente 24/7
-- Suporte técnico escalável
-- Redução de custos operacionais
+## 📊 Sistema de Níveis
 
-### 🎮 Para Comunidades
-- Suporte a membros
-- Sistema de dúvidas
-- Moderação assistida
+| Nível | Cargo | Benefícios |
+|-------|-------|------------|
+| 10 | @Ghoul | Alterar apelido |
+| 20 | @Hunter | Emojis/figurinhas externas |
+| 30 | @Feiticeiro | Enviar mídias |
+| 40 | @Alquimista | 2x chances em sorteios |
+| 50 | @Titã | Usar vídeo |
+| 60 | @Anbu | Enviar áudios |
+| 70 | @Hashira | Efeitos externos + 5% desconto VIP |
+| 80 | @Monarca | 15 dias VIP Draco grátis |
+| 90 | @Yonkou | Invadir calls |
+| 100 | @Rei Mago | 1 mês VIP Pegasus grátis |
 
-## 📊 Funcionalidades Avançadas
+## 🛠️ Desenvolvimento
 
-### Sistema de Persistência
-- Dados salvos em `tickets.json`
-- Histórico completo de mensagens
-- Backup automático de configurações
+### Estrutura do Projeto
+```
+├── index.js          # Arquivo principal do bot
+├── package.json      # Dependências e scripts
+├── .env.example     # Exemplo de configuração
+├── .env             # Configuração local (não versionado)
+├── tickets.json     # Dados dos tickets (gerado automaticamente)
+├── levels.json      # Dados de XP dos usuários (gerado automaticamente)
+└── README.md        # Este arquivo
+```
 
-### IA Contextual
-- Respostas personalizadas por contexto
-- Aprendizado baseado em tickets
-- Escalação inteligente para humanos
+### Dependências
+- `discord.js` - Biblioteca principal do Discord
+- `dotenv` - Gerenciamento de variáveis de ambiente
+- `fs` - Sistema de arquivos (nativo do Node.js)
 
-### Logs Detalhados
-- Criação de tickets com timestamp
-- Ações de usuários registradas
-- Métricas de performance
+## 🤝 Contribuição
 
-## 🔒 Segurança
-
-- ✅ Permissões granulares por ticket
-- ✅ Validação de comandos
-- ✅ Tratamento seguro de erros
-- ✅ Dados sensíveis em .env
-- ✅ Logs de auditoria
-
-## 🆘 Suporte e Personalização
-
-### Customização Disponível
-- 🎨 Cores e design dos embeds
-- 🤖 Personalidade da IA
-- 📝 Mensagens e textos
-- ⚙️ Funcionalidades adicionais
-
-### Serviços Oferecidos
-- ✅ Instalação completa
-- ✅ Configuração personalizada
-- ✅ Treinamento da equipe
-- ✅ Suporte técnico
-- ✅ Atualizações e melhorias
-
-## 📞 Contato
-
-Para contratar nossos serviços ou tirar dúvidas:
-
-- 💬 Discord: `@seu_discord`
-- 📧 Email: `seu@email.com`
-- 🌐 Website: `seusite.com`
+1. Fork o repositório
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/nova-funcionalidade`)
+5. Abra um Pull Request
 
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
+## 🌟 Créditos
+
+- **Tema**: Letaliverse - Comunidade cósmica de animes e games
+- **Imagens**: Designs personalizados para cada embed
+- **Desenvolvido com**: JavaScript, Discord.js v14
+
 ---
 
-**⚡ Bot profissional, suporte de qualidade, IA integrada!**
-
-*Transforme seu servidor Discord em um centro de suporte profissional.*
+**🌌 Feito com ❤️ para a comunidade Letaliverse**

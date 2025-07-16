@@ -1,22 +1,19 @@
 {
-  "name": "discord-ticket-ai-bot",
+  "name": "letaliverse-discord-bot",
   "version": "1.0.0",
-  "description": "Bot Discord profissional com sistema de tickets e IA integrada",
+  "description": "Bot Discord do Letaliverse com sistema de moderação, embeds personalizadas e tickets de suporte",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js"
   },
-  "keywords": ["discord", "bot", "tickets", "ai", "suporte"],
-  "author": "Seu Nome",
+  "keywords": ["discord", "bot", "moderacao", "tickets", "letaliverse", "embeds"],
+  "author": "Letaliverse Team",
   "license": "MIT",
   "dependencies": {
     "discord.js": "^14.13.0",
-    "openai": "^4.24.1",
-    "dotenv": "^16.3.1",
-    "fs": "^0.0.1-security",
-    "path": "^0.12.7"
+    "dotenv": "^16.3.1"
   },
   "engines": {
     "node": ">=16.9.0"
